@@ -81,7 +81,7 @@ router.route("/students/change-mentor").patch(async (request, response) => {
   const { id, mentorId } = request.body;
   try {
     const student = await Students.findByOne({ _id: id });
-    if (menorId) {
+    if (mentorId) {
       student.mentorId = mentorId;
     }
     await student.save();
