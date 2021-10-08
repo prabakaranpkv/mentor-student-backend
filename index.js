@@ -8,8 +8,7 @@ const app = express();
 const PORT = process.env.PORT || 4000;
 
 //opened connection to database
-const url =
-  "mongodb+srv://prabakaranpkv:110765@cluster0.mc702.mongodb.net/Students?retryWrites=true&w=majority";
+const url = process.env.MONGODB_URI;
 
 mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true });
 const con = mongoose.connection;
