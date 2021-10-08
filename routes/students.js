@@ -1,4 +1,4 @@
-import express, { response } from "express";
+import express from "express";
 import { Students } from "../models/student.js";
 const router = express.Router();
 router
@@ -15,7 +15,7 @@ router
     }
   })
   //creating Student
-  .post(async (request, reaponse) => {
+  .post(async (request, response) => {
     const addStdnt = request.body;
     console.log(addStdnt);
 
@@ -61,7 +61,7 @@ router
   });
 
 //assign mentor to student
-router.route("/students/assign-mentor").post(async (request, reponse) => {
+router.route("/students/assign-mentor").post(async (request, response) => {
   const { id, mentorId } = request.body;
   try {
     const student = await Students.findById({ _id: id });
@@ -80,7 +80,7 @@ router.route("/students/assign-mentor").post(async (request, reponse) => {
 router.route("/students/change-mentor").patch(async (request, response) => {
   const { id, mentorId } = request.body;
   try {
-    const student = await Students.findByOne({ _id: id });
+    const student = await Students.findById({ _id: id });
     if (mentorId) {
       student.mentorId = mentorId;
     }
